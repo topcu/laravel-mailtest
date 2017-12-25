@@ -1,0 +1,23 @@
+{
+    "name": "topcu/laravel-mailtest",
+    "description": "Command to test Mails",
+    "license": "MIT",
+    "homepage": "http://topcu.io",
+    "authors": [
+        {
+            "name": "Cagri TOPCU",
+            "email": "hctopcu@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/support": "5.2.*|5.3.*|5.4.*",
+        "illuminate/mail": "5.2.*|5.3.*|5.4.*",
+        "illuminate/console": "5.2.*|5.3.*|5.4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Topcu\\MailTest\\": "src/"
+        }
+    }
+}
