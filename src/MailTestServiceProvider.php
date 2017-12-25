@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Providers;
+namespace Topcu\MailTest;
 
 use Illuminate\Support\ServiceProvider;
-use Topcu\MailTest\MailTestCommand;
 
 class MailTestServiceProvider extends ServiceProvider
 {
@@ -17,10 +16,10 @@ class MailTestServiceProvider extends ServiceProvider
 
 
         if ($this->app->runningInConsole()) {
-
             $this->loadViewsFrom(__DIR__.'/../views', 'mailtest');
+
             $this->publishes([
-                __DIR__.'/path/to/views' => resource_path('views/vendor/courier'),
+                __DIR__.'/../views' => resource_path('views/vendor/mailtest'),
             ]);
 
             $this->commands([

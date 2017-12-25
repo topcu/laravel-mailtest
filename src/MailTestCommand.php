@@ -12,7 +12,7 @@ class MailTestCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'test:mail {email: email address} {--queue}';
+    protected $signature = 'test:mail {email : email address} {--queue}';
 
     /**
      * The console command description.
@@ -28,18 +28,20 @@ class MailTestCommand extends Command
      */
     public function handle()
     {
+
         $to = $this->argument("email");
         $queue_time = date("Y-m-d H:i:s");
 
         if($this->option("queue")){
-            Mail::queue('mailtest:mail', compact('queue_time'), function ($message) use ($to) {
+            Mail::queue('mailtest::mail', compact('to', 'queue_time'), function ($message) use ($to) {
                 $message->to($to)->subject('Test Email');
             });
         }else{
-            Mail::send('mailtest:mail', compact('queue_time'), function ($message) use ($to) {
+            Mail::send('mailtest::mail', compact('to', 'queue_time'), function ($message) use ($to) {
                 $message->to($to)->subject('Test Email');
             });
         }
+        $this->info("Mail sent to: $to");
 
     }
 }
